@@ -25,7 +25,7 @@ app.use('/auth', authRoutes);
 
 app.use(errorController.get404);
 app.use(errorController.get500);
-console.log(app);
+console.log(app.route);
 
 app.listen(port,()=>console.log(`Listening on port ${port}`));
 
