@@ -1,6 +1,5 @@
 const {validationResult} = require('express-validator');
 const User = require('../models/user');
-const Leaderboard = require('../models/leaderboard');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -21,24 +20,15 @@ exports.signup = async (req,res,next) =>{
             email:email,
             password: hashedPassword
         }
-        const leadDetails = {
-            username:name,
-            classAdd:0, 
-            dormChoice:0,
-            hamVisit:0,
-            facilVis:0,
-            faculCheck:0
-        }
-        const addresult = await Leaderboard.save(leadDetails)
+
         const result = await User.save(userDetails)
-        
 
         res.status(201).json({ message: 'User registered'})
     } catch(err){
         if (!err.statusCode){
             console.log("error!");
             err.statusCode = 500;
-        } 
+        }
         next(err)
     }
 };
