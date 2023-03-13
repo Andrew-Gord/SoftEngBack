@@ -25,7 +25,12 @@ app.use('/auth', authRoutes);
 
 app.use(errorController.get404);
 app.use(errorController.get500);
-console.log(app.route);
+
 
 app.listen(port,()=>console.log(`Listening on port ${port}`));
+app.get('/', function(req,res){
+    var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+    console.log(fullUrl);
+
+})
 
