@@ -28,9 +28,5 @@ app.use(errorController.get500);
 
 
 app.listen(port,()=>console.log(`Listening on port ${port}`));
-app.get('/', function(req,res){
-    var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-    console.log(fullUrl);
 
-})
 
