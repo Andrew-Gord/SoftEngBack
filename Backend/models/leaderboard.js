@@ -16,7 +16,7 @@ module.exports = class Leaderboard{
       }
       
       static update(post){
-          return db.execut(`UPDATE leaderboard SET ${post.column} = 1 WHERE id=(?)`,[post.id]);
+          return db.execute(`UPDATE leaderboard SET ${post.column} = 1 WHERE id=(?)`,[post.id]);
       }
 
       static save(post){

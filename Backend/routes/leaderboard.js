@@ -6,18 +6,18 @@ const leaderboardController = require ('../controllers/leaderboard');
 
 const auth =  require('../middleware/auth');
 
-const router = express.Router();
+const routers = express.Router();
 
-router.get('/', auth, leaderboardController.fetchAll);
+routers.get('/', auth, leaderboardController.fetchAll);
 
-router.post('/',
+routers.post('/',
     [
       auth,
       body('column').trim().isLength({ min: 1 }).not().isEmpty(),
       body('id').trim().isLength({max:1}).not().isEmpty(),
     ],
-    leaderboardController.update
+    leaderboardController.updateBoard
   );
 
 
-module.exports = router;
+module.exports = routers;
